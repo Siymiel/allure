@@ -28,18 +28,17 @@ const Header = () => {
 
         <div className="flex items-center justify-center">
           <div className="flex border border-[#C3129B] rounded">
-              <input type="text" className="px-4 py-1 w-96 text-sm" placeholder="Search for products..." />
+              <input type="text" className="px-4 py-2 border-0 w-96 text-sm font-light" placeholder="Search for products..." />
               <button className="flex items-center justify-center px-4 border-l border-[#C3129B]">
                   <svg className="w-6 h-6 text-[#C3129B]" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24">
-                      <path
-                          d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
+                      <path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
                   </svg>
               </button>
           </div>
         </div>   
 
-        <ul className='flex items-center space-x-2 divide-x divide-[#C3129B]'>
+        <ul className='flex items-center space-x-3'>
           <li>
             <HiOutlineUser className='w-5 h-5'/>
           </li>
@@ -56,9 +55,9 @@ const Header = () => {
     <nav className='text-sm font-semibold flex justify-between bg-black py-3 text-white px-10'>
       <button className='flex items-center space-x-1' variant="contained" onClick={handleClick}>
         <CgMenuGridO className='h-4 w-5'/>
-        <p>Categories</p>
+        <p className='font-light'>Categories</p>
       </button>
-      <ul className='flex items-center space-x-5'>
+      <ul className='flex items-center space-x-5 font-light'>
         <li>Home</li>
         <li>About</li>
         <li>Find a Store</li>
@@ -71,25 +70,26 @@ const Header = () => {
       open={open}
       onClose={handleClose}
       anchorOrigin={{
-        vertical: 'bottom',
+        vertical: 'top',
         horizontal: 'left',
       }}
+      className="mt-24"
     >
-      <ul className='py-2 px-4 border border-gray-100 rounded max-w-md space-y-2'>
-        <li className='flex items-center space-x-2 text-sm font-medium'>
-          <CiFaceSmile className='w-4 h-4 text-[#C3129B]'/>
+      <ul className='py-2 px-4 border border-gray-100 rounded max-w-md space-y-4'>
+        <li className='flex items-center space-x-2 font-light text-black'>
+          <CiFaceSmile className='w-6 h-6 text-[#C3129B]'/>
           <span>Makeup</span>
         </li>
-        <li className='flex items-center space-x-2 text-sm font-medium'>
-          <FaHandSparkles className='w-4 h-4 text-[#C3129B]'/>
+        <li className='flex items-center space-x-2 font-light text-black'>
+          <FaHandSparkles className='w-6 h-6 text-[#C3129B]'/>
           <span>Nails</span>
         </li>
-        <li className='flex items-center space-x-2 text-sm font-medium'>
-          <HiOutlineUserCircle className='w-4 h-4 text-[#C3129B]'/>
+        <li className='flex items-center space-x-2 font-light text-black'>
+          <HiOutlineUserCircle className='w-6 h-6 text-[#C3129B]'/>
           <span>Skin Care</span>
         </li>
-        <li className='flex items-center space-x-2 text-sm font-medium'>
-          <GrUserFemale className='w-4 h-4 text-[#C3129B] fill-current'/>
+        <li className='flex items-center space-x-2 font-light text-black'>
+          <GrUserFemale className='w-6 h-6 text-[#C3129B] fill-current'/>
           <span>Hair Products</span>
         </li>
       </ul>

@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { BsArrowRightCircle } from 'react-icons/bs'
 
-export default function StoreCard() {
+export default function ProductCard() {
   return (
     <Card sx={{ maxWidth: 345 }} className="group">
       <CardMedia
