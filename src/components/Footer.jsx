@@ -1,4 +1,5 @@
 import React from 'react'
+import SubmitButton from './utils/SubmitButton'
 
 const Footer = () => {
   return (
@@ -37,6 +38,7 @@ const Footer = () => {
             <div className='text-white'>
                 <h5 className='text-xl font-light uppercase'>Stay Updated</h5>
                 <p className='text-md pt-4 text-white font-light'>Join our mailing list for exclusive access to sales, new stocks, and tips on the best beauty and cosmetics.</p>
+                <SubmitButton />
             </div>
         </section>
         <div>
