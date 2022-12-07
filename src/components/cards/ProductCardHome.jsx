@@ -22,9 +22,8 @@ const Info = styled.div`
 
 const Container = styled.div`
   flex: 1;
-  margin: 5px;
-  min-width: 280px;
-  height: 350px;
+  min-width: 270px;
+  height: 280px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,9 +70,9 @@ const Icon = styled.div`
 const ProductCard = () => {
   return (
     <Container>
-      <div className="absolute z-10 top-2 left-2 bg-gray-800 text-white text-xs uppercase font-light py-1 px-3">
-        <span>11% off</span>
-      </div>
+        <div className="absolute z-10 top-2 left-2 bg-gray-800 text-white text-xs uppercase font-light py-1 px-3">
+            <span>11% off</span>
+        </div>
       <Circle />
       <Image src="https://images.unsplash.com/photo-1541643600914-78b084683601?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=404&q=80" />
       <Info>

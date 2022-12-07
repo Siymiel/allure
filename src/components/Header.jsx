@@ -7,6 +7,7 @@ import { CiFaceSmile } from 'react-icons/ci'
 import { FaHandSparkles } from 'react-icons/fa'
 import { GrUserFemale } from 'react-icons/gr'
 import Popover from '@mui/material/Popover';
+import { Link } from 'react-router-dom'
 
 const Header = () => {
 
@@ -22,9 +23,9 @@ const Header = () => {
     <header className='border-t border-gray-400'>
     <section className=' max-w-6xl mx-auto'>
       <div className='flex items-center justify-between py-4'>
-        <div>
+        <Link to="/">
           <img className='w-full h-8 object-cover object-center' src="https://alluretechnology.africa/wp-content/uploads/2022/04/allure_header_logo-1.png" alt="logo"/>
-        </div>
+        </Link>
 
         <div className="flex items-center justify-center">
           <div className="flex border border-[#C3129B] rounded">
@@ -46,7 +47,9 @@ const Header = () => {
             <MdFavoriteBorder className='w-5 h-5'/>
           </li>
           <li className='pl-2'>
-            <BsCart3 className='w-5 h-5'/>
+            <Link to="/cart">
+              <BsCart3 className='w-5 h-5'/>
+            </Link>
           </li>
         </ul>
       </div>
@@ -60,7 +63,11 @@ const Header = () => {
       <ul className='flex items-center space-x-5 font-light'>
         <li>Home</li>
         <li>About</li>
-        <li>Find a Store</li>
+        <li>
+          <Link to="/store-listings">
+            Find a Store
+          </Link>
+        </li>
         <li>FAQs</li>
         <li>Blog</li>
         <li>Contact</li>
