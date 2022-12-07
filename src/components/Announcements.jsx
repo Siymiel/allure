@@ -3,7 +3,7 @@ import { RiLuggageCartLine } from 'react-icons/ri'
 
 const Announcements = () => {
   return (
-  <div className='flex items-center justify-between px-10 py-2 text-white bg-black bg-opacity-75'>
+  <div className='flex items-center justify-between px-10 py-3 bg-white bg-opacity-75'>
       <div className='flex items-center space-x-1 font-light'>
         <BsCart4 className='fill-[#C3129B]'/>
         <span className='text-xs tracking-wider'>15 days free return of purchased products.</span>
