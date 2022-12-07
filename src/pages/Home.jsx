@@ -9,10 +9,12 @@ import Cta002 from '../components/ctas/Cta002'
 import CueTheNew from '../components/sections/CueTheNew'
 import BestSelling from '../components/sections/BestSelling'
 import SellerOfTheMonth from '../components/sections/SellerOfTheMonth'
+import Announcements from '../components/Announcements'
 
 const Home = () => {
   return (
     <main>
+      <Announcements />
       <Header />
       <Slider />
       <ByCategory />
