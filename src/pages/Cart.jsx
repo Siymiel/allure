@@ -4,6 +4,7 @@ import { GrFormAdd, GrFormSubtract } from 'react-icons/gr'
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Announcements from '../components/Announcements'
 
 const Container = styled.div``;
 
@@ -137,6 +138,7 @@ const Button = styled.button`
 const Cart = () => {
   return ( 
     <Container>
+        <Announcements />
         <Header />
       <Wrapper>
         <Top>

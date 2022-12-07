@@ -10,13 +10,14 @@ import CueTheNew from '../components/sections/CueTheNew'
 import BestSelling from '../components/sections/BestSelling'
 import SellerOfTheMonth from '../components/sections/SellerOfTheMonth'
 import Announcements from '../components/Announcements'
+import HeroSlider from '../components/Sliders/HeroSlider'
 
 const Home = () => {
   return (
     <main>
       <Announcements />
       <Header />
-      <Slider />
+      <HeroSlider />
       <ByCategory />
       <CueTheNew />
       <StoreList currentpage="home"/>

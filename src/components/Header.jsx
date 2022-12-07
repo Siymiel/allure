@@ -20,7 +20,7 @@ const Header = () => {
   }
 
   return (
-    <header className='border-t border-gray-400'>
+    <header className='border-t border-gray-400 sticky top-0 z-30 bg-white transition-all'>
     <section className=' max-w-6xl mx-auto'>
       <div className='flex items-center justify-between py-4'>
         <Link to="/">
