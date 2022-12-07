@@ -8,11 +8,15 @@ import Cart from './pages/Cart';
 import StoreList from './pages/StoreList';
 import Faqs from './pages/Faqs';
 import Store from './pages/Store';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 const App = () => {
   return (
    <>
     <Routes>
+      <Route exact path="/login" element={<Login />}/>
+      <Route exact path="/register" element={<Register />}/>
       <Route exact path="/" element={<Home />}/>
       <Route exact path="/category/:slug" element={<CategoryProducts />}/>
       <Route exact path="/product/:slug" element={<Product />}/>
