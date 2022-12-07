@@ -6,8 +6,10 @@ import { CgMenuGridO } from 'react-icons/cg'
 import { CiFaceSmile } from 'react-icons/ci'
 import { FaHandSparkles } from 'react-icons/fa'
 import { GrUserFemale } from 'react-icons/gr'
+import { FiPhoneCall } from 'react-icons/fi'
 import Popover from '@mui/material/Popover';
 import { Link } from 'react-router-dom'
+import { Badge } from "@material-ui/core";
 
 const Header = () => {
 
@@ -48,7 +50,9 @@ const Header = () => {
           </li>
           <li className='pl-2'>
             <Link to="/cart">
-              <BsCart3 className='w-5 h-5'/>
+               <Badge badgeContent={0} color="primary">
+                  <BsCart3 className='w-5 h-5'/>
+               </Badge>
             </Link>
           </li>
         </ul>
@@ -61,17 +65,29 @@ const Header = () => {
         <p className='font-light'>Categories</p>
       </button>
       <ul className='flex items-center space-x-5 font-light'>
-        <li>Home</li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
         <li>About</li>
         <li>
           <Link to="/store-listings">
             Find a Store
           </Link>
         </li>
-        <li>FAQs</li>
+        <li>
+          <Link to="/questions">
+            FAQs
+          </Link>
+        </li>
         <li>Blog</li>
         <li>Contact</li>
       </ul>
+      <div className="flex items-center space-x-2">
+        <div class="w-7 h-7 rounded-full bg-[#C3129B] grid items-center justify-center">
+          <FiPhoneCall />
+        </div>
+        <p className="text-xs font-light text-white">Call us: +254(0)759 817 749</p>
+      </div>
     </nav>
     <Popover
       open={open}

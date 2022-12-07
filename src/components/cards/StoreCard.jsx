@@ -3,6 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { BsArrowRightCircle } from 'react-icons/bs'
+import { Link } from 'react-router-dom'
 
 export default function StoreCard() {
   return (
@@ -24,9 +25,9 @@ export default function StoreCard() {
         <p className='font-light text-sm group-hover:text-white'>
           Nairobi, Kenya
         </p>
-        <div>
+        <Link to="/store/globe-scope">
             <BsArrowRightCircle className="h-6 w-6 group-hover:text-white"/>
-        </div>
+        </Link>
       </div>
     </Card>
   );
