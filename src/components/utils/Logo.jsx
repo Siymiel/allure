@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-const Logo = () => {
+export const Logo = () => {
   return (
     <>
         <Link to="/">
@@ -10,4 +10,13 @@ const Logo = () => {
   )
 }
 
-export default Logo
+export const Logo2 = () => {
+  return (
+    <div className='flex justify-center'>
+        <Link to="/">
+          <img className='w-36 h-8 object-cover object-center' src="https://alluretechnology.africa/wp-content/uploads/2022/04/allure_header_logo-1.png" alt="logo"/>
+        </Link>
+    </div>
+  )
+}
+

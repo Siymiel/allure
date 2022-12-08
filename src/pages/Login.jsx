@@ -1,11 +1,9 @@
-import Header from "../components/Header"
-import Footer from "../components/Footer"
+import LoginForm from "../components/sections/LoginForm"
 
 const Login = () => {
   return (
-    <main>
-      <Header />
-      <Footer />
+    <main className="grid items-center justify-center">
+      <LoginForm />
     </main>
   )
 }

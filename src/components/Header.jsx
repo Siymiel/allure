@@ -3,7 +3,7 @@ import { CgMenuGridO } from 'react-icons/cg'
 import { FiPhoneCall } from 'react-icons/fi'
 import Popover from '@mui/material/Popover';
 import SearchButtonHome from './utils/SearchButtonHome'
-import Logo from './utils/Logo'
+import {Logo} from './utils/Logo'
 import NavLinks from './utils/NavLinks'
 import NavCategories from './utils/NavCategories';
 import NavActionButtons from './utils/NavActionButtons';

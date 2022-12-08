@@ -1,11 +1,8 @@
-import Header from "../components/Header"
-import Footer from "../components/Footer"
-
+import RegisterForm from "../components/sections/RegisterForm"
 const Register = () => {
   return (
-    <main>
-      <Header />
-      <Footer />
+    <main className="grid items-center justify-center">
+      <RegisterForm />
     </main>
   )
 }
