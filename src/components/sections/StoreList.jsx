@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import StoreCard from '../cards/StoreCard'
 import { HiOutlineSortDescending } from 'react-icons/hi'
+import axios from 'axios'
+
 
 const StoreList = ({ currentpage }) => {
   const page = currentpage
+
+  const [stores, setStores] = useState([])
+  const fetchStores = async () => {
+    try {
+      const res = await axios.get('/api/v1/stores')
+      setStores(res.data)
+    } catch (err) {
+      throw new Error(err)
+    }
+  }
+
+  useEffect(() => {
+    fetchStores()
+  }, [])
+
   return (
     <section className='mt-20'>
       
@@ -20,13 +37,17 @@ const StoreList = ({ currentpage }) => {
         )}
 
         <section className='grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 px-10 mt-10'>
-            <StoreCard />
-            <StoreCard />
-            <StoreCard />
-            <StoreCard />
-            <StoreCard />
-            <StoreCard />
-        </section>
+          {
+            stores.map(store => 
+            <StoreCard 
+              key={store._id} 
+              title={store.name}
+              storeImg={store.image}
+              />
+              )
+          }
+            
+          </section>
     </section>
   )
 }

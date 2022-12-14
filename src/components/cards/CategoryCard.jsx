@@ -21,3 +21,4 @@ const CategoryCard = ({ url, title }) => {
 }
 
 export default CategoryCard
+
