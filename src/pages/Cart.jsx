@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import { useEffect } from "react";
 import { GrFormAdd, GrFormSubtract } from 'react-icons/gr'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Announcements from '../components/Announcements'
+import { deleteProduct, addProductQty, decProductQty, removeProduct } from "../redux/features/cartFeature";
+import { useDispatch, useSelector } from "react-redux";
 
 const Container = styled.div``;
 
@@ -55,6 +58,7 @@ const ProductDetail = styled.div`
 
 const Image = styled.img`
   width: 200px;
+  height: 150px;
 `;
 
 const Details = styled.div`
@@ -63,7 +67,7 @@ const Details = styled.div`
   justify-content: space-around;
 `;
 
-const ProductName = styled.p``;
+const ProductName = styled.div``;
 
 const PriceDetail = styled.div`
   flex: 1;
@@ -136,6 +140,31 @@ const Button = styled.button`
 `;
 
 const Cart = () => {
+  const navigate = useNavigate()
+  const cart = useSelector(state => state.cart);
+  const dispatch = useDispatch()
+
+  const handleQuantity = (id, type) => {
+    if (type === "asc") {
+      dispatch(addProductQty(id))
+    } else {
+      dispatch(decProductQty(id))
+    }
+  }
+
+  useEffect(() => {  
+    handleQuantity()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const handleRemove = (id) => {
+    dispatch(deleteProduct(id))
+  }
+
+  const handleClearCart = () => {
+    dispatch(removeProduct())
+  }
+
   return ( 
     <Container>
         <Announcements />
@@ -145,39 +174,46 @@ const Cart = () => {
           <Link to="/products">
             <TopButton className="font-light">CONTINUE SHOPPING</TopButton>
           </Link>
-          <TopButton type="filled">CLEAR CART</TopButton>
+          <TopButton type="filled" onClick={handleClearCart}>CLEAR CART</TopButton>
         </Top>
         <Bottom>
           <Info>
+              {cart.products?.map(product => (
               <>
-                <Product>
+                <Product key={product._id}>
                   <ProductDetail>
-                    <Image className="h-36 object-cover object-center" src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=553&q=80" />
-                    <Details className="px-10">
-                      <ProductName className="font-light text-2xl">
-                        Product Title
+                    <Image className="object-center object-cover" src={product.img} />
+                    <Details>
+                      <ProductName className="pl-4">
+                        <p className="font-medium">Title:</p> {product.title}
                       </ProductName>
                     </Details>
                   </ProductDetail>
                   <PriceDetail>
-                    <ProductPrice>KSh 2999</ProductPrice>
                     <ProductAmountContainer>
-                      <GrFormSubtract />
-                      <ProductAmount>1</ProductAmount>
-                      <GrFormAdd/>
+                      {
+                      product.productQuantity > 1 ?
+                      <GrFormSubtract onClick={() => handleQuantity(product._id, "desc")}/>
+                      :
+                      ""
+                      }
+                      <ProductAmount>{product.productQuantity}</ProductAmount>
+                      <GrFormAdd onClick={() => handleQuantity(product._id, "asc")}/>
                     </ProductAmountContainer>
-
-                    <Text>Remove</Text>
+                    <ProductPrice>$ {product.price * product.productQuantity}</ProductPrice>
+                  <Text onClick={() => handleRemove(product._id)}>Remove</Text>
                   </PriceDetail>
                 </Product>
                 <Hr />
               </>
+            ))}
+
           </Info>
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem className="font-light">
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>KSh 2999</SummaryItemPrice>
+              <SummaryItemPrice>KSh {cart.total}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem className="font-light">
               <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -189,7 +225,7 @@ const Cart = () => {
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>KSh 2999</SummaryItemPrice>
+              <SummaryItemPrice>KSh {cart.total}</SummaryItemPrice>
             </SummaryItem>
               <Button>CHECKOUT NOW</Button>
           </Summary>

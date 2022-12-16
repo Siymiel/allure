@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ProductCardHome from '../cards/ProductCardHome'
+import { getProducts } from '../../redux/apis/productsApiCalls'
+import { useDispatch, useSelector } from 'react-redux'
 
 const BestSelling = () => {
+  const dispatch = useDispatch();
+  const products = useSelector(state => state.products?.products)
+
+  useEffect(() => {
+    getProducts(dispatch)
+  }, [dispatch]);
+
   return (
     <section className='pt-20'>
         <div className='flex justify-between px-10 pb-5'>
@@ -14,15 +23,16 @@ const BestSelling = () => {
             </div>
             </div>
             <div className='grid grid-cols-3 gap-6'>
-                <ProductCardHome />
-                <ProductCardHome />
-                <ProductCardHome />
-                <ProductCardHome />
-                <ProductCardHome />
-                <ProductCardHome />
+                {
+                  products.map((product, index) => {
+                    return (
+                      <ProductCardHome key={product?._id} id={product?._id} imageUrl={product?.img} />
+                    )
+                  })
+                }
             </div>
         </section>
-    </section>
+    </section>  
   )
 }
 

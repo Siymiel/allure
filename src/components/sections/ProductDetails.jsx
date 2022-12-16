@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { mobile } from "../../responsive";
 import { GrFormAdd, GrFormSubtract } from 'react-icons/gr'
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from 'react-router-dom'
+import { addProduct } from "../../redux/features/cartFeature";
+import { useState } from "react";
+import toast from 'react-hot-toast';
 
 const Container = styled.div``;
 
@@ -85,42 +90,90 @@ const Button = styled.button`
 `;
 
 const BackButton = styled.div`
-  padding-left: 48px;
-  padding-top: 10px;
   font-size: 16px;
   cursor: pointer;
 `;
 
 const ProductDetails = () => {
 
+  const product = useSelector(state => state.products?.product)
+  const user = useSelector(state => state.user?.currentUser)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const location = useLocation()
+  const productId = location.pathname.split('/')[2];
+
+  const [productQuantity, setProductQuantity] = useState(1);
+
+  const productsInCart = useSelector(state => state.cart.products)
+  const cartProds = Object.values(productsInCart)
+
+  const checkProduct =  () => {
+    const boolean = cartProds.map(prod => {
+      if(prod._id === productId) {
+        return true
+      } else {
+        return false
+      }
+    })
+    return boolean[0]
+  }
+
+
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      productQuantity > 1  && setProductQuantity(productQuantity - 1);
+    } else {
+      setProductQuantity(productQuantity + 1);
+    }
+  };
+
+  const handleAddToCart = () => {
+    if(user) {
+      if (product) {
+        dispatch(addProduct({ ...product, productQuantity }));
+        toast.success("Product added to cart!")
+      } else {
+        toast.error("Error selecting product!")
+      } 
+    } else {
+      navigate('/login')
+      toast.error('Sign in to continue.');
+    }
+  }
+
   return (
     <Container>
-      <BackButton>Go Back</BackButton>
+      <div className="hover:bg-gray-100 py-1 px-4 transition-all rounded w-24 mt-2 ml-10" onClick={() => navigate(-1)}>
+        <BackButton>Go Back</BackButton>
+      </div>
       <Wrapper>
         <ImgContainer>
-          <Image src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyZnVtZXxlbnwwfDJ8MHx8&auto=format&fit=crop&w=500&q=60" />
+          <Image src={product?.img} />
         </ImgContainer>
         <InfoContainer>
-          <Title className="tracking-wide">Product Title</Title>
+          <Title className="tracking-wide">{product?.title}</Title>
           <Desc className="tracking-wide">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-            molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum 
-            numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium 
+            {product?.desc}
           </Desc>
           <div className="flex space-x-4 items-baseline">
-            <Price>Ksh 2999</Price>
-            <p className="line-through text-xl font-light">Ksh 3400</p>
+            <Price>Ksh {product?.price}</Price>
+            <p className="line-through text-xl font-light">Ksh 4400</p>
             <div className="px-3 py-1 rounded-full bg-red-400 text-white grid items-center justify-center">
                 <p className="text-xs font-light uppercase">11% off</p>
             </div>
           </div>
           <AddContainer className="mt-10">
             <AmountContainer>
-              <GrFormSubtract className="w-6 h-6" style={{"cursor": "pointer"}} />
-              <Amount>1</Amount>
-              <GrFormAdd className="w-6 h-6" style={{"cursor": "pointer"}}/>
+              <GrFormSubtract className="w-6 h-6" style={{"cursor": "pointer"}} onClick={() => handleQuantity("dec")}/>
+              <Amount>{productQuantity}</Amount>
+              <GrFormAdd className="w-6 h-6" style={{"cursor": "pointer"}} onClick={() => handleQuantity("inc")}/>
             </AmountContainer>
-              <Button>ADD TO CART</Button>
+              {
+              checkProduct() === true ? 
+              <Button onClick={() => toast.error("Product already added to cart")}>ADD TO CART</Button> :
+              <Button  onClick={handleAddToCart}>ADD TO CART</Button>
+            }
           </AddContainer>
         </InfoContainer>
       </Wrapper>

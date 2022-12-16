@@ -37,7 +37,7 @@ const Header = () => {
         </button>
         <NavLinks />
         <div className="flex items-center space-x-2">
-          <div class="w-7 h-7 rounded-full bg-[#C3129B] grid items-center justify-center">
+          <div className="w-7 h-7 rounded-full bg-[#C3129B] grid items-center justify-center">
             <FiPhoneCall />
           </div>
           <p className="text-xs font-light text-white">Call us: +254(0)759 817 749</p>
