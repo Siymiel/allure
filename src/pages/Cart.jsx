@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { mobile } from "../responsive";
 import { useEffect } from "react";
 import { GrFormAdd, GrFormSubtract } from 'react-icons/gr'
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Announcements from '../components/Announcements'
@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 const Container = styled.div``;
 
 const Wrapper = styled.div`
-  padding: 20px;
+  padding: 40px;
   ${mobile({ padding: "10px" })}
 `;
 
@@ -171,10 +171,8 @@ const Cart = () => {
         <Header />
       <Wrapper>
         <Top>
-          <Link to="/products">
-            <TopButton className="font-light">CONTINUE SHOPPING</TopButton>
-          </Link>
-          <TopButton type="filled" onClick={handleClearCart}>CLEAR CART</TopButton>
+            <TopButton onClick={() => navigate(-1)} className="font-light">CONTINUE SHOPPING</TopButton>
+            <TopButton type="filled" onClick={handleClearCart}>CLEAR CART</TopButton>
         </Top>
         <Bottom>
           <Info>

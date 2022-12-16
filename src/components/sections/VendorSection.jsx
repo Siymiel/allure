@@ -1,5 +1,5 @@
 
-const VendorSection = () => {
+const VendorSection = ({ store }) => {
   return (
     <section className="mt-10 max-w-full px-20">
         <section className="grid grid-cols-2 gap-8">
@@ -7,9 +7,9 @@ const VendorSection = () => {
                  <h4 className="text-2xl font-light pb-4">Vendor Details</h4>
                  <div className="flex items-center space-x-4">
                     <img className='h-24 w-24 rounded-full object-center object-cover' src="https://alluretechnology.africa/wp-content/uploads/2022/04/cropped-store_logo_7.jpg" alt="store-logo"/>
-                    <p className="text-3xl font-light">Globe Scope</p>
+                    <p className="text-3xl font-light">{store?.name}</p>
                  </div>
-                 <p className="text-sm font-light tracking-wide mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum!</p>
+                 <p className="text-sm font-light tracking-wide mt-2">{store?.desc}</p>
 
             </section>
             <form className="grid">

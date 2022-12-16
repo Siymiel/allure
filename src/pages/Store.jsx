@@ -3,14 +3,27 @@ import Footer from "../components/Footer"
 import Announcements from "../components/Announcements"
 import Hero from "../components/Hero"
 import VendorSection from "../components/sections/VendorSection"
+import { getStore } from '../redux/apis/storeApiCalls'
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useLocation } from "react-router-dom" 
 
 const Store = () => {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const storeId = location.pathname.split('/')[2]
+  const store = useSelector((state) => state.stores?.store)
+
+  useEffect(() => {
+    getStore(dispatch, storeId)
+  }, [dispatch, storeId]);
+
   return (
     <main>
         <Announcements />
         <Header />
-        <Hero title="Store Title" imageUrl="https://images.unsplash.com/photo-1556741533-6e6a62bd8b49?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"/>
-        <VendorSection />
+        <Hero store={store}/>
+        <VendorSection store={store}/>
         <Footer />
     </main>
   )
