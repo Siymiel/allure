@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Home from './pages/Home';
 import CategoryProducts from './pages/CategoryProducts';
@@ -10,12 +10,14 @@ import Faqs from './pages/Faqs';
 import Store from './pages/Store';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import { useSelector } from 'react-redux'
 
 const App = () => {
+  const token = useSelector(state => state.user?.currentUser?.accessToken);
   return (
    <>
     <Routes>
-      <Route exact path="/login" element={<Login />}/>
+      <Route exact path="/login" element={token ? <Navigate replace to="/"/> : <Login />}/>
       <Route exact path="/register" element={<Register />}/>
       <Route exact path="/" element={<Home />}/>
       <Route exact path="/category/:slug" element={<CategoryProducts />}/>

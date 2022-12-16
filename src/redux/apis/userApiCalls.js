@@ -20,11 +20,11 @@ export const attemptLogin = async (dispatch, user) => {
     }
 }
 
-export const attemptLogout = async (dispatch, username) => {
+export const attemptLogout = async (dispatch, email) => {
     dispatch(logoutStart());
 
     try {
-        await publicRequest.post('/logout', username)
+        await publicRequest.post('/users/logout', email)
         dispatch(logoutSuccess())
         toast.success("Successfully logged out!")
     } catch (err) {
