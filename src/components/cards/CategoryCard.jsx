@@ -1,11 +1,11 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 // 
 const CategoryCard = ({ category }) => {
   return (
-    <div className='px-3'>
+    <div className='px-2'>
     {/* Should link to products that fall under that category and not the individual category */}
-    <div className="max-w-md">
+    <Link to={`/category/${category?._id}`} className="max-w-md">
         <div className="group">
               <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
                 <img
@@ -16,7 +16,7 @@ const CategoryCard = ({ category }) => {
               </div>
               <h3 className="mt-2 text-md font-light text-gray-900">{category?.name}</h3>
         </div>
-    </div>
+    </Link>
     </div>
   )
 }

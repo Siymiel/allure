@@ -23,7 +23,7 @@ const App = () => {
       <Route exact path="/login" element={token ? <Navigate replace to="/"/> : <Login />}/>
       <Route exact path="/register" element={<Register />}/>
       <Route exact path="/" element={<Home />}/>
-      <Route exact path="/category/:slug" element={<CategoryProducts />}/>
+      <Route exact path="/category/:id" element={<CategoryProducts />}/>
       <Route exact path="/products" element={<ProductsListing />}/>
       <Route exact path="/product/:slug" element={<Product />}/>
       <Route exact path="/cart" element={<Cart />}/>

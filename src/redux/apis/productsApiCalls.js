@@ -19,7 +19,7 @@ export const getProducts = async (dispatch) => {
     }
  }
 
- export const getProduct = async (dispatch, id) => {
+export const getProduct = async (dispatch, id) => {
     dispatch(getProductStart())
 
     try {
@@ -28,5 +28,28 @@ export const getProducts = async (dispatch) => {
     } catch (err) {
         dispatch(getProductFailure())
     }
- }
+}
+
+export const getCategoryProducts = async (dispatch, categoryId) => {
+    dispatch(getProductsStart())
+
+    try {
+        const res = await publicRequest.get(`/products?category=${categoryId}`)
+        dispatch(getProductsSuccess(res.data))
+    } catch (err) {
+        dispatch(getProductsFailure())
+    }
+}
+
+export const getLatestProducts = async (dispatch, x) => {
+    dispatch(getProductsStart())
+
+    try {
+        const res = await publicRequest.get(`/products?latest=${x}`)
+        console.log(res)
+        // dispatch(getProductsSuccess(res.data))
+    } catch (err) {
+        dispatch(getProductFailure())
+    }
+}
     

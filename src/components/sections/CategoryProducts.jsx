@@ -1,21 +1,37 @@
 import React from 'react'
 import ProductCard from '../cards/ProductCard'
-import { HiOutlineSortDescending } from 'react-icons/hi'
+// import { HiOutlineSortDescending } from 'react-icons/hi'
+import { useSelector } from 'react-redux'
+// import { getLatestProducts } from '../../redux/apis/productsApiCalls'
 
 const CategoryProducts = () => {
+  const categoryProducts = useSelector(state => state.products?.products)
+  // const dispatch = useDispatch()
+  // const param = "new";
+
+  // const handleGetLastestProducts = () => {
+    // getLatestProducts(dispatch, param)
+  // }
+
   return (
     <section>
       <div className='px-10 text-2xl pb-5 font-light mt-20 flex items-center justify-between'>
-        <h3>Showing all 4 results</h3>
-        <HiOutlineSortDescending className='w-7 h-7'/>
+        <h3>Showing {categoryProducts ? categoryProducts.length : 0} results</h3>
+        <select className='py-1 text-sm'>
+          <option>Latest</option>
+          <option>Ascending</option>
+          <option>Descending</option>
+        </select>
       </div>
-    <section className='grid grid-cols-4 gap-6 px-10'>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+    <section className={`grid ${categoryProducts.length > 0 ? 'grid-cols-4' : 'grid-cols-1'} gap-6 px-10`}>
+      {categoryProducts.length > 0 ?
+      categoryProducts.map(product => (
+        <ProductCard key={product?._id} product={product}/>
+      )) :
+      <p className='text-2xl font-light text-center'>No products found for this category</p>
+      }
     </section>
-    </section>
+    </section> 
   )
 }
 
