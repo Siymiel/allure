@@ -20,11 +20,11 @@ const Store = () => {
 
   return (
     <main>
-        <Announcements />
-        <Header />
-        <Hero store={store}/>
-        <VendorSection store={store}/>
-        <Footer />
+      <Announcements />
+      <Header />
+      <Hero store={store}/>
+      <VendorSection store={store}/>
+      <Footer />
     </main>
   )
 }

@@ -1,18 +1,77 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import CategoryCard from '../cards/CategoryCard'
+import { getCategories } from '../../redux/apis/categoriesApiCalls'
+import { useDispatch, useSelector } from 'react-redux'
+import Slider from "react-slick";
 
 const ByCategory = () => {
+  const dispatch = useDispatch();
+  const categories = useSelector(state => state.categories?.categories)
+
+  useEffect(() => {
+    getCategories(dispatch)
+  }, [dispatch])
+
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 4000,
+    lazyLoad: true,
+    pauseOnHover: true,
+    swipeToSlide: true,
+    autoplay: true,
+    centerPadding: "60px",
+    focusOnSelect: true,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    rtl: false,
+    cssEase: "linear",
+    autoplaySpeed: 6000,
+    responsive: [
+      {
+      breakpoint: 1024,
+      settings: {
+          dots: true,
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+      }
+      },
+      {
+      breakpoint: 600,
+      settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true
+      }
+      },
+      {
+      breakpoint: 480,
+      settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrow: false,
+          dots: false
+      }
+      }
+  ]
+  };
+
   return (
     <section className='mt-20'>
-        <div className='text-center text-4xl font-light uppercase'>
-            <h2>Shop by Category</h2>
-        </div>
-        <section className='grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 px-10 mt-10'>
-            <CategoryCard url="https://images.pexels.com/photos/7561034/pexels-photo-7561034.jpeg?auto=compress&cs=tinysrgb&w=600" title="Gifts"/>
-            <CategoryCard url="https://images.pexels.com/photos/998405/pexels-photo-998405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" title="Nails"/>
-            <CategoryCard url="https://images.pexels.com/photos/3762466/pexels-photo-3762466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" title="Skin Care"/>
-            <CategoryCard url="https://images.pexels.com/photos/7449901/pexels-photo-7449901.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" title="Hair Products"/>
-        </section>
+      <div className='text-center text-4xl font-light uppercase'>
+        <h2>Shop by Category</h2>
+      </div>
+      <section className='px-10 mt-10'>
+        <Slider {...settings}>
+        {categories?.map(category => (
+          <CategoryCard
+            key={category._id}
+            category={category}
+          />
+        ))}
+        </Slider>
+      </section>
     </section>
   )
 }

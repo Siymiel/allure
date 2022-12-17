@@ -14,7 +14,7 @@ const NavActionButtons = () => {
     <>
       <ul className='flex items-center space-x-3'>
         <li className='flex items-center space-x-1'>
-          {user && <p className='capitalize text-xs'>{user?.firstname}</p>}
+          {user && <p className='capitalize text-sm'>{user?.firstname}</p>}
           <Link to="/login">
             <HiOutlineUser className='w-5 h-5'/>
           </Link>

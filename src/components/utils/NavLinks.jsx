@@ -1,14 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { attemptLogout } from '../../redux/apis/userApiCalls';
 
 const NavLinks = () => {
     const user = useSelector(state => state.user.currentUser);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const email = user?.email;
     const handleLogout = (e) => {
         e.preventDefault()
         attemptLogout(dispatch, {email})
+        navigate('/')
     }
     
     return (

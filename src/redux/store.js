@@ -3,6 +3,7 @@ import userReducer from "./features/userFeature"
 import productsReducer from "./features/productsFeature"
 import cartReducer from "./features/cartFeature"
 import storeReducer from './features/storeFeature'
+import categoryReducer from "./features/categoryFeature"
 
 import {
   persistStore,
@@ -26,7 +27,8 @@ const rootReducer = combineReducers({
   user: userReducer,
   products: productsReducer,
   cart: cartReducer,
-  stores: storeReducer
+  stores: storeReducer,
+  categories: categoryReducer
 })
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

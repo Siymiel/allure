@@ -1,6 +1,8 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom';
 
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import Home from './pages/Home';
 import CategoryProducts from './pages/CategoryProducts';
 import Product from './pages/Product';
@@ -10,7 +12,8 @@ import Faqs from './pages/Faqs';
 import Store from './pages/Store';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import { useSelector } from 'react-redux'
+import ProductsListing from './pages/ProductsListing';
+import { useSelector } from 'react-redux';
 
 const App = () => {
   const token = useSelector(state => state.user?.currentUser?.accessToken);
@@ -21,6 +24,7 @@ const App = () => {
       <Route exact path="/register" element={<Register />}/>
       <Route exact path="/" element={<Home />}/>
       <Route exact path="/category/:slug" element={<CategoryProducts />}/>
+      <Route exact path="/products" element={<ProductsListing />}/>
       <Route exact path="/product/:slug" element={<Product />}/>
       <Route exact path="/cart" element={<Cart />}/>
       <Route exact path="/store-listings" element={<StoreList />}/>
