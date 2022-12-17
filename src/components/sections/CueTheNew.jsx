@@ -1,5 +1,5 @@
 import React from 'react'
-import ProductCard from '../cards/ProductCard'
+import CueNewCard from '../cards/CueNewCard'
 
 const CueTheNew = () => {
   return (
@@ -14,12 +14,12 @@ const CueTheNew = () => {
             </div>
             </div>
             <div className='grid grid-cols-3 gap-6'>
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
+              <CueNewCard />
+              <CueNewCard />
+              <CueNewCard />
+              <CueNewCard />
+              <CueNewCard />
+              <CueNewCard />  
             </div>
         </section>
     </section>
