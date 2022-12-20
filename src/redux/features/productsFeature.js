@@ -5,6 +5,7 @@ const productSlice = createSlice({
     initialState: {
         products: null,
         product: null,
+        latestProducts: null,
         isFetching: false,
         error: false
     },
@@ -30,7 +31,18 @@ const productSlice = createSlice({
         getProductFailure: (state) => {
             state.isFetching = false;
             state.error = true;
-        }
+        },
+        getLatestProductsStart: (state) => {
+            state.isFetching = true
+        },
+        getLatestProductsSuccess: (state, action) => {
+            state.isFetching = false;
+            state.latestProducts = action.payload;
+        },
+        getLatestProductsFailure: (state) => {
+            state.isFetching = false;
+            state.error = true;
+        },
     }
 });
 
@@ -41,5 +53,8 @@ export const {
     getProductStart, 
     getProductSuccess, 
     getProductFailure, 
+    getLatestProductsStart,
+    getLatestProductsSuccess,
+    getLatestProductsFailure,
 } = productSlice.actions;
 export default productSlice.reducer;

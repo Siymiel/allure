@@ -6,6 +6,9 @@ import {
     getProductStart, 
     getProductSuccess, 
     getProductFailure, 
+    getLatestProductsStart,
+    getLatestProductsSuccess,
+    getLatestProductsFailure,
 } from "../features/productsFeature"
 
 export const getProducts = async (dispatch) => { 
@@ -42,14 +45,14 @@ export const getCategoryProducts = async (dispatch, categoryId) => {
 }
 
 export const getLatestProducts = async (dispatch, x) => {
-    dispatch(getProductsStart())
+    dispatch(getLatestProductsStart())
 
     try {
-        const res = await publicRequest.get(`/products?latest=${x}`)
-        console.log(res)
-        // dispatch(getProductsSuccess(res.data))
+        const res = await publicRequest.get(`/products?new=${x}`)
+        console.log(res.data)
+        dispatch(getLatestProductsSuccess(res.data))
     } catch (err) {
-        dispatch(getProductFailure())
+        dispatch(getLatestProductsFailure())
     }
 }
     

@@ -67,20 +67,20 @@ const Icon = styled.div`
   }
 `;
 
-const CueNewCard = () => {
+const CueNewCard = ({ product }) => {
   return (
     <Container>
       <div className="absolute z-10 top-2 left-2 bg-gray-800 text-white text-xs uppercase font-light py-1 px-3">
         <span>11% off</span>
       </div>
       <Circle />
-      <Image src="https://images.pexels.com/photos/7561034/pexels-photo-7561034.jpeg?auto=compress&cs=tinysrgb&w=600" />
+      <Image src={product?.img} />
       <Info>
         <Icon>
           <BsCart3/>
         </Icon>
         <Icon>
-          <Link to={`/product/1`}>
+          <Link to={`/product/${product?._id}`}>
             <RiSearchLine />
           </Link>
         </Icon>

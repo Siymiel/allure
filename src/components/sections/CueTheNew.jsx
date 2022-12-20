@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import CueNewCard from '../cards/CueNewCard'
+import { getLatestProducts } from '../../redux/apis/productsApiCalls'
+import { useDispatch, useSelector } from 'react-redux'
 
 const CueTheNew = () => {
+  const dispatch = useDispatch()
+  const latestProducts = useSelector(state => state.products?.latestProducts)
+  const latest = "new"
+
+  useEffect(() => {
+    getLatestProducts(dispatch, latest)
+  }, [dispatch]);
+
   return (
     <section className='pt-20'>
         <div className='flex justify-between px-10 pb-5'>
@@ -14,12 +24,11 @@ const CueTheNew = () => {
             </div>
             </div>
             <div className='grid grid-cols-3 gap-6'>
-              <CueNewCard />
-              <CueNewCard />
-              <CueNewCard />
-              <CueNewCard />
-              <CueNewCard />
-              <CueNewCard />  
+              {
+              latestProducts?.map(latest => (
+                <CueNewCard key={latest?._id} product={latest}/>
+              ))
+              }
             </div>
         </section>
     </section>
