@@ -24,7 +24,7 @@ const BestSelling = () => {
             </div>
             <div className='grid grid-cols-3 gap-6'>
                 {
-                  products.map((product, index) => {
+                  products?.map((product) => {
                     return (
                       <ProductCardHome key={product?._id} id={product?._id} imageUrl={product?.img} />
                     )

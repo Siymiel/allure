@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const BASE_URL = "http://localhost:5000/api/v1";
+// const BASE_URL = "http://localhost:5000/api/v1";
+const BASE_URL = "https://allure-api.onrender.com/api/v1";
 const fakeToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzliNzRiZWMzMjQxMzg1NTY4ZjA0NzMiLCJpYXQiOjE2NzExNjU3ODYsImV4cCI6MTY3MTI1MjE4Nn0.-At_RNJ2E7aaVy72YLXjG8DW0Tg2brkn0pWN0oTmu7I"
 const token = localStorage.getItem("persist:root") ? JSON.parse(JSON.parse(localStorage.getItem("persist:root"))?.user)?.currentUser?.accessToken : fakeToken;
 
