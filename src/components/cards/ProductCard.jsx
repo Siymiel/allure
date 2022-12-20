@@ -72,7 +72,7 @@ const ProductCard = ({ product }) => {
   return (
     <Container>
       <div className="absolute z-10 top-2 left-2 bg-gray-800 text-white text-xs uppercase font-light py-1 px-3">
-        <span>11% off</span>
+        <span>15% off</span>
       </div>
       <Circle />
       <Image src={product?.img} />
