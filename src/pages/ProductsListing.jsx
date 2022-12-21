@@ -16,8 +16,11 @@ const ProductsListing = () => {
           <div className="py-5 flex justify-between items-center">
           <p className="font-light">All Products({products?.length})</p>
           <div className="flex items-center space-x-5">
-              <button className="py-1 px-5 rounded border text-sm font-light bg-gray-200">Add Items</button>
-              <button className="py-1 px-5 rounded border text-sm font-light text-white bg-[#C3129B]">Clear list</button>
+            <select className="py-1 text-sm font-light">
+              <option>Latest</option>
+              <option>Ascending</option>
+              <option>Descending</option>
+            </select>
           </div>
         </div>
           <section className="grid grid-cols-4 gap-6 pt-10">

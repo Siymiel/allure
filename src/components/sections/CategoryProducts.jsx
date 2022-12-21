@@ -16,7 +16,7 @@ const CategoryProducts = () => {
   return (
     <section>
       <div className='px-10 text-2xl pb-5 font-light mt-20 flex items-center justify-between'>
-        <h3>Showing {categoryProducts ? categoryProducts.length : 0} results</h3>
+        <h3>Products under this category ({categoryProducts ? categoryProducts.length : 0})</h3>
         <select className='py-1 text-sm'>
           <option>Latest</option>
           <option>Ascending</option>
