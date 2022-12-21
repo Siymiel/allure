@@ -171,7 +171,7 @@ const ProductDetails = () => {
             </AmountContainer>
               {
               checkProduct() === true ? 
-              <Button onClick={() => toast.error("Product already added to cart")}>ADD TO CART</Button> :
+              <Button onClick={() => toast("Product already added to cart", { icon: "👍" })}>ADD TO CART</Button> :
               <Button  onClick={handleAddToCart}>ADD TO CART</Button>
             }
           </AddContainer>

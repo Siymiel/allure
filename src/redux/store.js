@@ -4,6 +4,7 @@ import productsReducer from "./features/productsFeature"
 import cartReducer from "./features/cartFeature"
 import storeReducer from './features/storeFeature'
 import categoryReducer from "./features/categoryFeature"
+import wishlistFeature from "./features/wishlistFeature";
 
 import {
   persistStore,
@@ -28,7 +29,8 @@ const rootReducer = combineReducers({
   products: productsReducer,
   cart: cartReducer,
   stores: storeReducer,
-  categories: categoryReducer
+  categories: categoryReducer,
+  wishlist: wishlistFeature
 })
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

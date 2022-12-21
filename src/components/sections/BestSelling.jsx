@@ -26,7 +26,7 @@ const BestSelling = () => {
                 {
                   products?.map((product) => {
                     return (
-                      <ProductCardHome key={product?._id} id={product?._id} imageUrl={product?.img} />
+                      <ProductCardHome key={product?._id} product={product} />
                     )
                   })
                 }

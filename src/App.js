@@ -13,6 +13,7 @@ import Store from './pages/Store';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ProductsListing from './pages/ProductsListing';
+import Wishlist from './pages/Wishlist';
 import { useSelector } from 'react-redux';
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
       <Route exact path="/store-listings" element={<StoreList />}/>
       <Route exact path="/questions" element={<Faqs />}/>
       <Route exact path="/store/:slug" element={<Store />}/>
+      <Route exact path="/wishlist" element={<Wishlist />}/>
     </Routes>
    </>
   )

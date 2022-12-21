@@ -21,7 +21,7 @@ const Home = () => {
       <CueTheNew />
       <StoreList currentpage="home"/>
       <BestSelling />
-      <div className='grid grid-cols-2 gap-8 mt-20 max-w-7xl mx-auto px-10'>
+      <div className='grid grid-cols-2 gap-8 mt-20 max-w-7xl mx-auto px-5'>
         <Cta001 />
         <Cta002 />
       </div>

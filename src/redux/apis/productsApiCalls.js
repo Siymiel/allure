@@ -49,7 +49,6 @@ export const getLatestProducts = async (dispatch, x) => {
 
     try {
         const res = await publicRequest.get(`/products?new=${x}`)
-        console.log(res.data)
         dispatch(getLatestProductsSuccess(res.data))
     } catch (err) {
         dispatch(getLatestProductsFailure())

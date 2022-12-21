@@ -20,7 +20,9 @@ const NavActionButtons = () => {
           </Link>
         </li>
         <li className='pl-2'>
-          <MdFavoriteBorder className='w-5 h-5'/>
+          <Link to="/wishlist">
+            <MdFavoriteBorder className='w-5 h-5'/>
+          </Link>
         </li>
         <li className='pl-2'>
           <Link to="/cart">
