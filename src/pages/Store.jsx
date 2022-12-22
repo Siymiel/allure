@@ -14,7 +14,7 @@ const Store = () => {
   const location = useLocation();
   const storeId = location.pathname.split('/')[2]
   const store = useSelector((state) => state.stores?.store)
-  const storeProduct = useSelector(state => state.stores?.store?.products)
+  const storeProducts = useSelector(state => state.stores?.store?.products)
 
   useEffect(() => {
     getStore(dispatch, storeId)
@@ -30,13 +30,13 @@ const Store = () => {
           <div>
             <h2 className="text-4xl font-light text-center">Store Products</h2>
           </div>
-          <section className="grid grid-cols-4 gap-6 pt-10">
+          <section className={`grid ${storeProducts.length === 0 ? 'grid-cols-1' : 'grid-cols-4' } gap-6 pt-10`}>
             {
-              storeProduct !== null ?
-              storeProduct.map((product) => (
-                <ProductCardHome product={product}/>
-              )) :
-              <p className="text-3xl font-light text-center">No Products found in this store</p>
+              storeProducts.length === 0 ?
+              <p className="text-3xl font-light text-center text-gray-700">No Products found in this store.</p> :
+              storeProducts.map(product => (
+                <ProductCardHome key={product?._id} product={product}/>
+              ))
             }
           </section>
       </section>
