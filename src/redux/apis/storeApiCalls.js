@@ -24,7 +24,6 @@ export const getStores = async (dispatch) => {
 
     try {
         const res = await publicRequest.get(`/stores/${id}`)
-        console.log(res.data)
         dispatch(getStoreSuccess(res.data))
     } catch (err) {
         dispatch(getStoreFailure())

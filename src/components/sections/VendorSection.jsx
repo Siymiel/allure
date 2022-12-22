@@ -6,7 +6,7 @@ const VendorSection = ({ store }) => {
             <section className="grid">
                  <h4 className="text-2xl font-light pb-4">Vendor Details</h4>
                  <div className="flex items-center space-x-4">
-                    <img className='h-24 w-24 rounded-full object-center object-cover' src="https://alluretechnology.africa/wp-content/uploads/2022/04/cropped-store_logo_7.jpg" alt="store-logo"/>
+                    <img className='h-24 w-24 rounded-full object-center object-cover' src={store?.logo} alt="store-logo"/>
                     <p className="text-3xl font-light">{store?.name}</p>
                  </div>
                  <p className="text-sm font-light tracking-wide mt-2">{store?.desc}</p>

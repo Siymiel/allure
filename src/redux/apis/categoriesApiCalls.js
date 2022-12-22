@@ -24,7 +24,7 @@ export const getCategories = async (dispatch) => {
 
     try {
         const res = await publicRequest.get(`/categories/${id}`)
-        dispatch(getCategorySuccess(res.data))
+        dispatch(getCategorySuccess(res.data.category))
     } catch (err) {
         dispatch(getCategoryFailure())
     }

@@ -149,7 +149,7 @@ const ProductDetails = () => {
       </div>
       <Wrapper>
         <ImgContainer>
-          <Image src={product?.img} />
+          <Image className="transition-all duration-500 ease-in-out transform hover:scale-105" src={product?.img} />
         </ImgContainer>
         <InfoContainer>
           <Title className="tracking-wide">{product?.title}</Title>
