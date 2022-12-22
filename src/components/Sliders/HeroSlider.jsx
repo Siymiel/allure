@@ -1,9 +1,10 @@
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { sliderItems } from "../../data";
 import { mobile } from "../../responsive";
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { getSliders } from '../../redux/apis/slidersApiCalls'
 
 const Container = styled.div`
   width: 100%;
@@ -84,6 +85,14 @@ const Button = styled.button`
 `;
 
 const HeroSlider = () => {
+  const dispatch = useDispatch();
+  const sliderItems = useSelector(state => state.sliders?.sliders)
+
+
+  useEffect(() => {
+    getSliders(dispatch)
+  }, [dispatch])
+
   const [slideIndex, setSlideIndex] = useState(0);
   const handleClick = (direction) => {
     if (direction === "left") {
@@ -100,13 +109,13 @@ const HeroSlider = () => {
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
         {sliderItems.map((item) => (
-          <Slide bg={item.bg} key={item.id}>
+          <Slide bg={item.bg} key={item._id}>
             <ImgContainer>
               <Image src={item.img} />
             </ImgContainer>
             <InfoContainer>
-              <Title className='-mt-20'>{item.title}</Title>
-              <Desc>{item.desc}</Desc>
+              <Title className='-mt-20 uppercase'>{item.title}</Title>
+              <Desc className="uppercase">{item.desc}</Desc>
               <Link to="/products">
                 <Button>SHOW NOW</Button>
               </Link>
