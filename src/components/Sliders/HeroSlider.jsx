@@ -108,7 +108,8 @@ const HeroSlider = () => {
         <AiOutlineArrowLeft />
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
-        {sliderItems.map((item) => (
+        {sliderItems?.length > 0 ? 
+        sliderItems?.map((item) => (
           <Slide bg={item.bg} key={item._id}>
             <ImgContainer>
               <Image src={item.img} />
@@ -121,7 +122,10 @@ const HeroSlider = () => {
               </Link>
             </InfoContainer>
           </Slide>
-        ))}
+        ))
+        : 
+        ""
+        }
       </Wrapper>
       <Arrow direction="right" onClick={() => handleClick("right")}>
         <AiOutlineArrowRight />

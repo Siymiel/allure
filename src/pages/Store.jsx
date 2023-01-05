@@ -32,9 +32,9 @@ const Store = () => {
           </div>
           <section className={`grid ${storeProducts.length === 0 ? 'grid-cols-1' : 'grid-cols-4' } gap-6 pt-10`}>
             {
-              storeProducts.length === 0 ?
+              storeProducts?.length === 0 ?
               <p className="text-3xl font-light text-center text-gray-700">No Products found in this store.</p> :
-              storeProducts.map(product => (
+              storeProducts?.map(product => (
                 <ProductCardHome key={product?._id} product={product}/>
               ))
             }
